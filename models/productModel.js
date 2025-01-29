@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const reviewSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
-    rating: { type: Number, required: true, min: 1, max: 5 }, // Ensure rating is between 1 and 5
+    rating: { type: Number, required: true, min: 1, max: 5 }, 
     comment: { type: String, required: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -58,23 +58,23 @@ const productSchema = mongoose.Schema(
       type: Number,
       required: true,
       default: 0,
-      get: (price) => (price / 100).toFixed(2), // Convert cents to dollars when retrieving
-      set: (price) => Math.round(price * 100), // Convert dollars to cents when saving
+      get: (price) => (price / 100).toFixed(2), 
+      set: (price) => Math.round(price * 100), g
     },
     countInStock: {
       type: Number,
       required: true,
       default: 0,
-      min: 0, // Ensure stock count is non-negative
+      min: 0, 
     },
   },
   {
     timestamps: true,
-    toJSON: { getters: true }, // Enable getters when converting to JSON
+    toJSON: { getters: true }, 
   }
 );
 
-// Indexes for improved query performance
+
 productSchema.index({ category: 1 });
 productSchema.index({ brand: 1 });
 productSchema.index({ rating: -1 });

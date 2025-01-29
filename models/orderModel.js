@@ -23,7 +23,7 @@ const orderSchema = mongoose.Schema(
     shippingAddress: {
       address: { type: String, required: true },
       city: { type: String, required: true },
-      postalCode: { type: String, required: true, match: /^\d{5}(-\d{4})?$/ }, // Validate US ZIP code format
+      postalCode: { type: String, required: true, match: /^\d{5}(-\d{4})?$/ }, 
       country: { type: String, required: true },
     },
     paymentMethod: {
@@ -50,8 +50,8 @@ const orderSchema = mongoose.Schema(
       type: Number,
       required: true,
       default: 0.0,
-      get: (price) => (price / 100).toFixed(2), // Convert cents to dollars when retrieving
-      set: (price) => Math.round(price * 100), // Convert dollars to cents when saving
+      get: (price) => (price / 100).toFixed(2), 
+      set: (price) => Math.round(price * 100), 
     },
     isPaid: {
       type: Boolean,
@@ -72,11 +72,11 @@ const orderSchema = mongoose.Schema(
   },
   {
     timestamps: true,
-    toJSON: { getters: true }, // Enable getters when converting to JSON
+    toJSON: { getters: true }, 
   }
 );
 
-// Indexes for improved query performance
+
 orderSchema.index({ user: 1 });
 orderSchema.index({ isPaid: 1 });
 orderSchema.index({ isDelivered: 1 });

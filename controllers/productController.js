@@ -1,9 +1,9 @@
 const asyncHandler = require('express-async-handler');
 const Product = require('../models/productModel');
 
-// @desc    Fetch all products
-// @route   GET /api/products
-// @access  Public
+// description    Fetch all products
+// route   GET /api/products
+// access  Public
 const getProducts = asyncHandler(async (req, res) => {
   const pageSize = 12;
   const page = Number(req.query.pageNumber) || 1;
@@ -24,9 +24,9 @@ const getProducts = asyncHandler(async (req, res) => {
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
-// @desc    Fetch single product
-// @route   GET /api/products/:id
-// @access  Public
+// description    Fetch single product
+// route   GET /api/products/:id
+// access  Public
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -38,9 +38,9 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Create a product
-// @route   POST /api/products
-// @access  Private/Admin
+// description    Create a product
+// route   POST /api/products
+// access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
     name: 'Sample name',
@@ -58,9 +58,9 @@ const createProduct = asyncHandler(async (req, res) => {
   res.status(201).json(createdProduct);
 });
 
-// @desc    Update a product
-// @route   PUT /api/products/:id
-// @access  Private/Admin
+// description    Update a product
+// route   PUT /api/products/:id
+// access  Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
   const { name, price, description, image, brand, category, countInStock } =
     req.body;
@@ -84,9 +84,9 @@ const updateProduct = asyncHandler(async (req, res) => {
   res.json(updatedProduct);
 });
 
-// @desc    Delete a product
-// @route   DELETE /api/products/:id
-// @access  Private/Admin
+// descripton    Delete a product
+// route   DELETE /api/products/:id
+// access  Private/Admin
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -99,9 +99,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
   res.json({ message: 'Product removed' });
 });
 
-// @desc    Create a product review
-// @route   POST /api/products/:id/reviews
-// @access  Private
+// descripton    Create a product review
+// route   POST /api/products/:id/reviews
+// access  Private
 const createProductReview = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
 

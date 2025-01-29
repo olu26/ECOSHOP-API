@@ -2,8 +2,8 @@ const asyncHandler = require('express-async-handler');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel.js');
 
-// @desc    Protect routes with JWT authentication
-// @access  Private
+// descripton    Protect routes with JWT authentication
+// access  Private
 const protect = asyncHandler(async (req, res, next) => {
   let token;
 
@@ -47,8 +47,8 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
-// @desc    Restrict access to admin users
-// @access  Private/Admin
+// descripton    Restrict access to admin users
+// access  Private/Admin
 const admin = asyncHandler(async (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();

@@ -23,24 +23,24 @@ const validateLogin = [
   body('password').notEmpty().withMessage('Password is required'),
 ];
 
-// @desc    Authenticate user & get token
-// @route   POST /api/users/login
-// @access  Public
+// desc    Authenticate user & get token
+// route   POST /api/users/login
+// access  Public
 router.post('/login', validateLogin, asyncHandler(authUser));
 
-// @desc    Register a new user
-// @route   POST /api/user
-// @access  Public
+// desc    Register a new user
+// route   POST /api/user
+// access  Public
 router.post('/user', registerUser);
 
-// @desc    Get user profile
-// @route   GET /api/users/profile
-// @access  Private
+// desc    Get user profile
+// route   GET /api/users/profile
+// access  Private
 router.route('/profile').get(protect, asyncHandler(getUserProfile));
 
-// @desc    Update user profile
-// @route   PUT /api/users/profile
-// @access  Private
+// description    Update user profile
+// route   PUT /api/users/profile
+// access  Private
 router.route('/profile').put(protect, validateUser, asyncHandler(updateUserProfile));
 
 module.exports = router;

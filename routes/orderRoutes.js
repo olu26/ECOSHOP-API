@@ -21,24 +21,24 @@ const validateOrder = [
   body('totalPrice').isNumeric().withMessage('Total price must be a number'),
 ];
 
-// @desc    Create a new order
-// @route   POST /api/orders
-// @access  Private
+// descripton    Create a new order
+// route   POST /api/orders
+// access  Private
 router.route('/').post(protect, validateOrder, asyncHandler(createOrder));
 
-// @desc    Get logged-in user's orders
-// @route   GET /api/orders/myorders
-// @access  Private
+// descripton    Get logged-in user's orders
+// route   GET /api/orders/myorders
+// access  Private
 router.route('/myorders').get(protect, asyncHandler(getMyOrders));
 
-// @desc    Get order by ID
-// @route   GET /api/orders/:id
-// @access  Private
+// descripton    Get order by ID
+// route   GET /api/orders/:id
+// access  Private
 router.route('/:id').get(protect, asyncHandler(getOrderById));
 
-// @desc    Update order to paid
-// @route   PUT /api/orders/:id/pay
-// @access  Private
+// descripton    Update order to paid
+// route   PUT /api/orders/:id/pay
+// access  Private
 router.route('/:id/pay').put(protect, asyncHandler(updateOrderToPaid));
 
 module.exports = router;

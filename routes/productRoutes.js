@@ -29,34 +29,34 @@ const validateReview = [
   body('comment').notEmpty().withMessage('Comment is required'),
 ];
 
-// @desc    Fetch all products
-// @route   GET /api/products
-// @access  Public
+// descripton    Fetch all products
+// route   GET /api/products
+// access  Public
 router.route('/').get(asyncHandler(getProducts));
 
-// @desc    Create a new product
-// @route   POST /api/products
-// @access  Private/Admin
+// descripton    Create a new product
+// route   POST /api/products
+// access  Private/Admin
 router.route('/').post(protect, admin, validateProduct, asyncHandler(createProduct));
 
-// @desc    Create a new review
-// @route   POST /api/products/:id/reviews
-// @access  Private
+// descripton    Create a new review
+// route   POST /api/products/:id/reviews
+// access  Private
 router.route('/:id/reviews').post(protect, validateReview, asyncHandler(createProductReview));
 
-// @desc    Fetch single product
-// @route   GET /api/products/:id
-// @access  Public
+// descripton    Fetch single product
+// route   GET /api/products/:id
+// access  Public
 router.route('/:id').get(asyncHandler(getProductById));
 
-// @desc    Update a product
-// @route   PUT /api/products/:id
-// @access  Private/Admin
+// descripton    Update a product
+// route   PUT /api/products/:id
+// access  Private/Admin
 router.route('/:id').put(protect, admin, validateProduct, asyncHandler(updateProduct));
 
-// @desc    Delete a product
-// @route   DELETE /api/products/:id
-// @access  Private/Admin
+// description    Delete a product
+// route   DELETE /api/products/:id
+// access  Private/Admin
 router.route('/:id').delete(protect, admin, asyncHandler(deleteProduct));
 
 module.exports = router;

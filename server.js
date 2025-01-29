@@ -57,9 +57,9 @@ const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// Graceful shutdown
+// shutdown
 process.on('SIGTERM', () => {
-  console.log('SIGTERM received. Shutting down gracefully.');
+  console.log('SIGTERM received. Shutting down .');
   server.close(() => {
     console.log('Server closed.');
     process.exit(0);
@@ -67,7 +67,7 @@ process.on('SIGTERM', () => {
 });
 
 process.on('SIGINT', () => {
-  console.log('SIGINT received. Shutting down gracefully.');
+  console.log('SIGINT received. Shutting down .');
   server.close(() => {
     console.log('Server closed.');
     process.exit(0);
