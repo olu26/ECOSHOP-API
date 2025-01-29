@@ -40,7 +40,7 @@ app.use(express.json());
 // Routes
 app.use('/api', routes);
 
-// Error handling middleware
+// Error handling middlewar
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const status = err.status || 'error';
