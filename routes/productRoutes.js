@@ -11,6 +11,8 @@ const {
   createProductReview,
 } = require('../controllers/productController');
 const { protect, admin } = require('../middleware/authMiddleware');
+const { addSampleProducts } = require('../controllers/sampleProductController');
+
 
 // Validation middleware for creating/updating a product
 const validateProduct = [
@@ -34,7 +36,9 @@ const validateReview = [
 // access  Public
 router.route('/').get(asyncHandler(getProducts));
 
-// descripton    Create a new product
+router.route('/sample-products').post(protect, admin, asyncHandler(addSampleProducts)); 
+// description    Create a new product
+
 // route   POST /api/products
 // access  Private/Admin
 router.route('/').post(protect, admin, validateProduct, asyncHandler(createProduct));
