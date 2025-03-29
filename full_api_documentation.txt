@@ -1,0 +1,378 @@
+USER  
+
+1. Register a New User    
+   Method  : POST  
+   URL  :  /api/user   
+   Access  : Public  
+   Request Body  :  
+   json
+   {
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "password": "<user_password>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": false,
+     "token": "<generated_token>"
+   }
+
+2. User Login    
+   Method  : POST  
+   URL  :  /api/user/login   
+   Access  : Public  
+   Request Body  :  
+   json
+   {
+     "email": "<user_email>",
+     "password": "<user_password>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": false,
+     "token": "<generated_token>"
+   }
+
+3. Get User Profile    
+   Method  : GET  
+   URL  :  /api/user/profile   
+   Access  : Private  
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": false
+   }
+
+4. Update User Profile    
+   Method  : PUT  
+   URL  :  /api/user/profile   
+   Access  : Private  
+   Request Body  :  
+   json
+   {
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "password": "<user_password>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": false,
+     "token": "<generated_token>"
+   }
+
+ADMIN  
+
+5. Delete User    
+   Method  : DELETE  
+   URL  :  /api/user/:id   
+   Access  : Private/Admin  
+   Response  :  
+   json
+   {
+     "message": "User removed"
+   }
+
+6. Update User Role    
+   Method  : PUT  
+   URL  :  /api/user/:id/role   
+   Access  : Private/Admin  
+   Request Body  :  
+   json
+   {
+     "isAdmin": "<boolean>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": "<boolean>"
+   }
+
+7. Forgot Password    
+   Method  : POST  
+   URL  :  /api/user/forgot-password   
+   Access  : Public  
+   Request Body  :  
+   json
+   {
+     "email": "<user_email>"
+   }
+       
+   Response  :  
+   json
+   {
+     "message": "OTP sent to email"
+   }
+
+8. Verify OTP    
+   Method  : POST  
+   URL  :  /api/user/verify-otp   
+   Access  : Public  
+   Request Body  :  
+   json
+   {
+     "otp": "<otp>"
+   }
+       
+   Response  :  
+   json
+   {
+     "message": "OTP verified, you can now reset your password"
+   }
+
+PRODUCT  
+
+9. Fetch All Products    
+   Method  : GET  
+   URL  :  /api/products   
+   Access  : Public  
+   Response  :  
+   json
+   [
+     {
+       "_id": "<product_id>",
+       "name": "<product_name>",
+       "price": "<product_price>",
+       "description": "<product_description>",
+       "image": "<product_image>",
+       "brand": "<product_brand>",
+       "category": "<product_category>",
+       "countInStock": "<product_countInStock>"
+     }
+   ]
+
+10. Create a New Product    
+   Method  : POST  
+   URL  :  /api/products   
+   Access  : Private/Admin  
+   Request Body  :  
+   json
+   {
+     "name": "<product_name>",
+     "price": "<product_price>",
+     "description": "<product_description>",
+     "image": "<product_image>",
+     "brand": "<product_brand>",
+     "category": "<product_category>",
+     "countInStock": "<product_countInStock>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<product_id>",
+     "name": "<product_name>",
+     "price": "<product_price>",
+     "description": "<product_description>",
+     "image": "<product_image>",
+     "brand": "<product_brand>",
+     "category": "<product_category>",
+     "countInStock": "<product_countInStock>"
+   }
+
+11. Fetch Single Product    
+   Method  : GET  
+   URL  :  /api/products/:id   
+   Access  : Public  
+   Response  :  
+   json
+   {
+     "_id": "<product_id>",
+     "name": "<product_name>",
+     "price": "<product_price>",
+     "description": "<product_description>",
+     "image": "<product_image>",
+     "brand": "<product_brand>",
+     "category": "<product_category>",
+     "countInStock": "<product_countInStock>"
+   }
+
+12. Update a Product    
+   Method  : PUT  
+   URL  :  /api/products/:id   
+   Access  : Private/Admin  
+   Request Body  :  
+   json
+   {
+     "name": "<product_name>",
+     "price": "<product_price>",
+     "description": "<product_description>",
+     "image": "<product_image>",
+     "brand": "<product_brand>",
+     "category": "<product_category>",
+     "countInStock": "<product_countInStock>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<product_id>",
+     "name": "<product_name>",
+     "price": "<product_price>",
+     "description": "<product_description>",
+     "image": "<product_image>",
+     "brand": "<product_brand>",
+     "category": "<product_category>",
+     "countInStock": "<product_countInStock>"
+   }
+
+13. Delete a Product    
+   Method  : DELETE  
+   URL  :  /api/products/:id   
+   Access  : Private/Admin  
+   Response  :  
+   json
+   {
+     "message": "Product removed"
+   }
+
+14. Create a Product Review    
+   Method  : POST  
+   URL  :  /api/products/:id/reviews   
+   Access  : Private  
+   Request Body  :  
+   json
+   {
+     "rating": "<rating>",
+     "comment": "<comment>"
+   }
+       
+   Response  :  
+   json
+   {
+     "message": "Review added"
+   }
+
+ORDER  
+
+15. Create a New Order    
+   Method  : POST  
+   URL  :  /api/orders   
+   Access  : Private  
+   Request Body  :  
+   json
+   {
+     "orderItems": [
+       {
+         "product": "<product_id>",
+         "quantity": "<quantity>"
+       }
+     ],
+     "shippingAddress": "<shipping_address>",
+     "paymentMethod": "<payment_method>",
+     "itemsPrice": "<items_price>",
+     "taxPrice": "<tax_price>",
+     "shippingPrice": "<shipping_price>",
+     "totalPrice": "<total_price>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<order_id>",
+     "orderItems": [
+       {
+         "product": "<product_id>",
+         "quantity": "<quantity>"
+       }
+     ],
+     "shippingAddress": "<shipping_address>",
+     "paymentMethod": "<payment_method>",
+     "itemsPrice": "<items_price>",
+     "taxPrice": "<tax_price>",
+     "shippingPrice": "<shipping_price>",
+     "totalPrice": "<total_price>",
+     "isPaid": false,
+     "paidAt": null,
+     "user": "<user_id>"
+   }
+
+16. Get Logged-in User's Orders    
+   Method  : GET  
+   URL  :  /api/orders/myorders   
+   Access  : Private  
+   Response  :  
+   json
+   [
+     {
+       "_id": "<order_id>",
+       "orderItems": [
+         {
+           "product": "<product_id>",
+           "quantity": "<quantity>"
+         }
+       ],
+       "shippingAddress": "<shipping_address>",
+       "paymentMethod": "<payment_method>",
+       "itemsPrice": "<items_price>",
+       "taxPrice": "<tax_price>",
+       "shippingPrice": "<shipping_price>",
+       "totalPrice": "<total_price>",
+       "isPaid": false,
+       "paidAt": null,
+       "user": "<user_id>"
+     }
+   ]
+
+17. Get Order by ID    
+   Method  : GET  
+   URL  :  /api/orders/:id   
+   Access  : Private  
+   Response  :  
+   json
+   {
+     "_id": "<order_id>",
+     "orderItems": [
+       {
+         "product": "<product_id>",
+         "quantity": "<quantity>"
+       }
+     ],
+     "shippingAddress": "<shipping_address>",
+     "paymentMethod": "<payment_method>",
+     "itemsPrice": "<items_price>",
+     "taxPrice": "<tax_price>",
+     "shippingPrice": "<shipping_price>",
+     "totalPrice": "<total_price>",
+     "isPaid": false,
+     "paidAt": null,
+     "user": "<user_id>"
+   }
+
+18. Update Order to Paid    
+   Method  : PUT  
+   URL  :  /api/orders/:id/pay   
+   Access  : Private  
+   Request Body  :  
+   json
+   {
+     "id": "<order_id>",
+     "status": "<payment_status>"
+   }
+       
+   Response  :  
+   json
+   {
+     "message": "Order updated to paid"
+   }

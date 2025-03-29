@@ -1,0 +1,79 @@
+USER  
+
+1. Register a New User    
+   Method  : POST  
+   URL  :  /api/user   
+   Access  : Public  
+   Request Body  :  
+   json
+   {
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "password": "<user_password>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": false,
+     "token": "<generated_token>"
+   }
+
+2. User Login    
+   Method  : POST  
+   URL  :  /api/user/login   
+   Access  : Public  
+   Request Body  :  
+   json
+   {
+     "email": "<user_email>",
+     "password": "<user_password>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": false,
+     "token": "<generated_token>"
+   }
+
+3. Get User Profile    
+   Method  : GET  
+   URL  :  /api/user/profile   
+   Access  : Private  
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": false
+   }
+
+4. Update User Profile    
+   Method  : PUT  
+   URL  :  /api/user/profile   
+   Access  : Private  
+   Request Body  :  
+   json
+   {
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "password": "<user_password>"
+   }
+       
+   Response  :  
+   json
+   {
+     "_id": "<user_id>",
+     "name": "<user_name>",
+     "email": "<user_email>",
+     "isAdmin": false,
+     "token": "<generated_token>"
+   }

@@ -21,7 +21,23 @@ const getProducts = asyncHandler(async (req, res) => {
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
-  res.json({ products, page, pages: Math.ceil(count / pageSize) });
+  res.json({
+    message: "Successful",
+    allproduct: products.map(product => ({
+      _id: product._id,
+      productname: product.name,
+      price: product.price,
+      category: product.category,
+      stock: product.countInStock,
+      description: product.description,
+      images: product.images,
+      displayimage: product.image,
+      addedBy: product.user,
+      createdAt: product.createdAt,
+      __v: product.__v
+    }))
+  });
+
 });
 
 // description    Fetch single product
@@ -43,15 +59,22 @@ const getProductById = asyncHandler(async (req, res) => {
 // access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: 'Sample name',
-    price: 0,
+    name: 'alien ware x17',
+    price: 20000000, 
     user: req.user._id,
-    image: '/images/sample.jpg',
-    brand: 'Sample brand',
-    category: 'Sample category',
-    countInStock: 0,
-    numReviews: 0,
-    description: 'Sample description',
+    image: 'https://th.bing.com/th/id/OIP.K_QTUsw4A3ThwZGxA_l-rQHaDt?w=334&h=175&c=7&r=0&o=5&pid=1.7.jpg',
+    brand: 'dell',
+    category: 'laptop',
+    countInStock: 2,
+    numReviews: 34,
+    description: 'a very good laptop',
+    reviews: [
+      {
+        name: 'admin',
+        rating: 4,
+        comment: 'good product',
+      },
+    ],
   });
 
   const createdProduct = await product.save();
